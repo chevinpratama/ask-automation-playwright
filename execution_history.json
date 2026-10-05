@@ -1,0 +1,147 @@
+[
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Passed",
+    "start_time": "11/05/2026 15:08:48",
+    "end_time": "11/05/2026 15:16:13",
+    "duration": 444.88
+  },
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Not Passed",
+    "start_time": "11/05/2026 15:37:23",
+    "end_time": "11/05/2026 15:37:23",
+    "duration": 0.21,
+    "type": "Unknown Error",
+    "root_cause": "Belum teridentifikasi",
+    "category": "Unknown",
+    "severity": "Low",
+    "solution": "Periksa log manual"
+  },
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Not Passed",
+    "start_time": "11/05/2026 15:42:03",
+    "end_time": "11/05/2026 15:42:03",
+    "duration": 0.18,
+    "type": "Unknown Error",
+    "root_cause": "Belum teridentifikasi",
+    "category": "Unknown",
+    "severity": "Low",
+    "solution": "Periksa log manual"
+  },
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Not Passed",
+    "start_time": "11/05/2026 15:44:12",
+    "end_time": "11/05/2026 15:49:37",
+    "duration": 324.74,
+    "type": "Unknown Error",
+    "root_cause": "Belum teridentifikasi",
+    "category": "Unknown",
+    "severity": "Low",
+    "solution": "Periksa log manual"
+  },
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Passed",
+    "start_time": "11/05/2026 15:53:21",
+    "end_time": "11/05/2026 16:00:28",
+    "duration": 426.35
+  },
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Passed",
+    "start_time": "11/05/2026 16:17:44",
+    "end_time": "11/05/2026 16:24:53",
+    "duration": 428.6
+  },
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Passed",
+    "start_time": "12/05/2026 09:04:48",
+    "end_time": "12/05/2026 09:13:47",
+    "duration": 538.78
+  },
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Passed",
+    "start_time": "12/05/2026 09:24:54",
+    "end_time": "12/05/2026 09:33:52",
+    "duration": 537.95
+  },
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Not Passed",
+    "start_time": "12/05/2026 10:28:24",
+    "end_time": "12/05/2026 10:29:06",
+    "duration": 42.32,
+    "type": "API Error",
+    "root_cause": "Terjadi kesalahan pada layanan backend (API).",
+    "category": "API Issue",
+    "severity": "Critical",
+    "solution": "Periksa service backend atau API logs."
+  },
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Not Passed",
+    "start_time": "12/05/2026 11:05:13",
+    "end_time": "12/05/2026 11:09:36",
+    "duration": 263.09,
+    "type": "API Error",
+    "root_cause": "Terjadi kesalahan pada layanan backend (API).",
+    "category": "API Issue",
+    "severity": "Critical",
+    "solution": "Periksa service backend atau API logs."
+  },
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Not Passed",
+    "start_time": "12/05/2026 11:22:27",
+    "end_time": "12/05/2026 11:27:00",
+    "duration": 272.54,
+    "type": "API Error",
+    "root_cause": "Terjadi kesalahan pada layanan backend (API).",
+    "category": "API Issue",
+    "severity": "Critical",
+    "solution": "Periksa service backend atau API logs."
+  },
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Not Passed",
+    "start_time": "12/05/2026 11:27:31",
+    "end_time": "12/05/2026 11:31:00",
+    "duration": 208.5,
+    "type": "API Error",
+    "root_cause": "Terjadi kesalahan pada layanan backend (API).",
+    "category": "API Issue",
+    "severity": "Critical",
+    "solution": "Periksa service backend atau API logs."
+  },
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Passed",
+    "start_time": "12/05/2026 11:43:13",
+    "end_time": "12/05/2026 11:52:34",
+    "duration": 561.21
+  },
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Not Passed",
+    "start_time": "12/05/2026 12:07:51",
+    "end_time": "12/05/2026 12:11:24",
+    "duration": 213.08,
+    "type": "API Error",
+    "root_cause": "Terjadi kesalahan pada layanan backend (API).",
+    "category": "API Issue",
+    "severity": "Critical",
+    "solution": "Periksa service backend atau API logs."
+  },
+  {
+    "testcase": "test_run_klaim_kurangdibayar_askred",
+    "status": "Passed",
+    "start_time": "12/05/2026 14:13:01",
+    "end_time": "12/05/2026 14:21:06",
+    "duration": 484.27
+  }
+]

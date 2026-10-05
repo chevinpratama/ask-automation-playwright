@@ -1,0 +1,48 @@
+# ======================
+# Python
+# ======================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.venv/
+.env/
+.env
+
+
+# ======================
+# Screenshot & Report
+# ======================
+Screenshots/
+Automation_Report/*/Laporan_Passed/
+Automation_Report/*/Laporan_Failed/
+
+
+# Atau kalau mau ignore semua hasil report:
+Automation_Report/*/
+
+# ======================
+# OS Files
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# IDE
+# ======================
+.vscode/
+.idea/
+
+# ======================
+# Log files
+# ======================
+*.log
+
+# ======================
+# Config & Credentials
+# ======================
+Automation_DataAccess/config.json
+MANUAL_INSTALASI.md
