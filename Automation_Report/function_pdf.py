@@ -1,5 +1,153 @@
 from fpdf import FPDF
 import textwrap
+import json
+
+
+def write_payload_response(pdf, payload: dict, response: dict, step_index: int = 1, highlight_values=None):
+    """Cetak Request & Response API berdampingan dalam 2 kolom (porting dari kupedeskupra-1)."""
+    pdf.set_font("Arial", size=8)
+
+    # Copy agar response asli tidak berubah
+    response = dict(response)
+
+    # Pindahkan informasi performa ke bagian bawah
+    for key in ["ResponseTimeStatus", "ResponseTime"]:
+        if key in response:
+            value = response.pop(key)
+            response[key] = value
+
+    payload_lines = json.dumps(
+        payload,
+        indent=4,
+        ensure_ascii=False
+    ).split("\n")
+
+    response_lines = json.dumps(
+        response,
+        indent=4,
+        ensure_ascii=False
+    ).split("\n")
+
+    max_lines = max(len(payload_lines), len(response_lines))
+
+    box_width = 85
+    left_x = 20
+    line_height = 4.5
+    margin_bottom = 25
+
+    if highlight_values is None:
+        highlight_values = []
+
+    # ===== Header Drawing =====
+    def draw_header():
+        pdf.set_fill_color(230, 230, 230)
+        for i, text in enumerate(["Request", "Response"]):
+            pdf.set_xy(left_x + i * box_width, pdf.get_y())
+            pdf.cell(box_width, 8, text, border=1, align="C", fill=True)
+        pdf.ln(8)
+
+    # ===== Start =====
+    draw_header()
+    start_y = pdf.get_y()
+    top_y = start_y
+
+    pdf.set_font("Arial", size=8)
+
+    for idx in range(max_lines):
+        payload_line = payload_lines[idx] if idx < len(payload_lines) else ""
+        response_line = response_lines[idx] if idx < len(response_lines) else ""
+
+        # ===== Hitung tinggi baris =====
+        payload_split = pdf.multi_cell(
+            box_width - 2,
+            line_height,
+            payload_line,
+            split_only=True
+        )
+
+        response_split = pdf.multi_cell(
+            box_width - 2,
+            line_height,
+            response_line,
+            split_only=True
+        )
+
+        h_payload = len(payload_split) * \
+            line_height if payload_split else line_height
+        h_response = len(response_split) * \
+            line_height if response_split else line_height
+        max_h = max(h_payload, h_response)
+
+        # ===== Page Break =====
+        if top_y + max_h > pdf.h - margin_bottom:
+            full_height = top_y - start_y
+
+            pdf.rect(left_x, start_y, box_width * 2, full_height)
+            pdf.line(
+                left_x + box_width,
+                start_y,
+                left_x + box_width,
+                start_y + full_height
+            )
+
+            pdf.add_page()
+            pdf.set_font("Arial", size=8)
+
+            draw_header()
+
+            start_y = pdf.get_y()
+            top_y = start_y
+
+        # ===== Print Payload & Response =====
+        for col, text in enumerate([payload_line, response_line]):
+
+            pdf.set_xy(
+                left_x + col * box_width + 1,
+                top_y
+            )
+
+            lower = text.lower()
+
+            is_highlight = any(
+                k.lower() in lower
+                for k in highlight_values
+            )
+
+            if is_highlight:
+                pdf.set_fill_color(255, 255, 153)
+                pdf.multi_cell(
+                    box_width - 2,
+                    line_height,
+                    text,
+                    border=0,
+                    fill=True
+                )
+            else:
+                pdf.multi_cell(
+                    box_width - 2,
+                    line_height,
+                    text,
+                    border=0
+                )
+
+        top_y += max_h
+
+    # ===== Tutup Border Halaman Terakhir =====
+    full_height = top_y - start_y
+
+    pdf.rect(
+        left_x,
+        start_y,
+        box_width * 2,
+        full_height
+    )
+
+    pdf.line(
+        left_x + box_width,
+        start_y,
+        left_x + box_width,
+        start_y + full_height
+    )
 
 
 def write_verifikasi_database_flexible(

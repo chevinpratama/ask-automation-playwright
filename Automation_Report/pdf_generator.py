@@ -1727,7 +1727,8 @@ def generate_pdf_report(
         ba_title="BA System Integration Testing (SIT)",
         deskripsi=None,
         test_script_link=None,
-        report_title=""):
+        report_title="",
+        payloads=None):
 
     # =========================
     # MODE MULTI CASE (BATCH)
@@ -2078,6 +2079,20 @@ def generate_pdf_report(
                         )
 
                         pdf.ln(3)
+
+                # ===== PAYLOAD & RESPONSE (API) =====
+                payloads_case = case.get("payloads", [])
+                if payloads_case and i < len(payloads_case):
+                    p = payloads_case[i]
+                    if isinstance(p, dict) and ("request" in p or "response" in p):
+                        write_payload_response(
+                            pdf,
+                            payload=p.get("request", {}),
+                            response=p.get("response", {}),
+                            step_index=i + 1
+                        )
+                        pdf.ln(3)
+
             # =========================
             # ACTUAL RESULT (PALING BAWAH)
             # =========================
@@ -2319,6 +2334,19 @@ def generate_pdf_report(
                 pdf,
                 image_paths,
             )
+
+        # ===== PAYLOAD & RESPONSE (API) - SINGLE MODE =====
+        if payloads and i < len(payloads):
+            p = payloads[i]
+            if isinstance(p, dict) and ("request" in p or "response" in p):
+                write_payload_response(
+                    pdf,
+                    payload=p.get("request", {}),
+                    response=p.get("response", {}),
+                    step_index=i + 1
+                )
+                pdf.ln(3)
+
         # ===== ACTUAL RESULT =====
         pdf.ln(5)
         pdf.set_font("Arial", '', 11)
